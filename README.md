@@ -1,69 +1,63 @@
-## About this template
+# 🟦 Demo Portal Auth Tests – Web Login Automation
 
-This is a template to get started with a Gauge project that uses Selenium as the driver to interact with a web browser.
+Bu proje, örnek bir web portalı üzerinde **geçersiz kullanıcı bilgileri ile giriş deneme otomasyonunu** gerçekleştirmek için geliştirilmiştir.  
+Gauge BDD framework, Java ve Selenium WebDriver kullanılarak hazırlanmış **profesyonel bir test otomasyon mimarisidir.**
 
-## Installing this template
+---
 
-    gauge --install java_selenium
+## 🚀 Özellikler
 
-## Building on top of this template
+- **Gauge BDD Framework** – Spesifikasyon tabanlı test yazımı  
+- **Java + Selenium WebDriver** – UI etkileşim otomasyonu  
+- **Page Object Model (POM)** – Temiz, modüler ve sürdürülebilir mimari  
+- **Reusable Steps** – Tekrar kullanılabilir adım yapıları  
+- **Invalid Login Testleri** – User ID, Password, Security Code  
+- **Custom Utilities** – DBQuery, ExcelUtil, MailTemplate, DriverFactory  
+- **Screenshot & Report** desteği  
+- **Gerçek hayat iş görüşmesi portföyü için uygun yapı**
 
-### Define a Specification
+---
 
-- Create a new file under `specs` directory, say "hello_world.spec".
-- Define your specification in this file, an example below
+## 🧪 Örnek Senaryo (Specification)
 
-```
-Sample Specification
-====================
+```spec
+Scenario: Invalid login attempt on Demo Portal
 
-This is an executable specification file. This file follows markdown syntax. Every heading in this file denotes a scenario. Every bulleted point denotes a step.
-To execute this specification, use
-	mvn test
+* Navigate to Demo Portal homepage
+* Click the Login button
+* Enter User ID and Password
+* Enter Security Verification Code
+* Click Submit button
+* Validate that an error message is displayed
 
-* Navigate to "http://getgauge.io"
+PROJE YAPISI
+demo-portal-auth-tests/
+│
+├── specs/                      → Gauge senaryo dosyaları (.spec)
+│
+├── src
+│   └── test
+│        └── java
+│             └── com.web.base
+│                  ├── pages/           → Page Object sınıfları
+│                  ├── pagesteps/       → Step Implementations
+│                  ├── utils/           → DBQuery, ExcelUtil, VoucherUtil, Template vb.
+│                  ├── driver/          → Driver + DriverFactory
+│                  ├── reporting/       → Raporlama yardımcıları
+│                  └── template/        → Mail & HTML template
+│
+├── screenshots/               → Ekran görüntüleri
+├── env/                       → Ortam yapılandırmaları
+├── pom.xml                    → Maven bağımlılık yönetimi
+└── README.md
 
-Search for Gauge Documentation
-------------------------------
 
-* Go to Gauge Get Started Page
+Kullanılan Teknolojiler
 
-```
-Read more about [Specifications](http://getgauge.io/documentation/user/current/specifications/README.html)
-
-### Writing the implementations
-
-This is where the java implementation of the steps would be implemented. Since this is a Selenium based project, the java implementation would invoke Selenium APIs as required.
-
-_We recommend considering modelling your tests using the [Page Object](https://github.com/SeleniumHQ/selenium/wiki/PageObjects) pattern, and the [Webdriver support](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) for creating them._
-
-- Create a new class called, say, `SampleTest.java`
-- Add the Step implementation in the class, an example is below:
-```
-import com.thoughtworks.gauge.Gauge;
-import com.thoughtworks.gauge.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import static org.junit.Assert.assertTrue;
-
-public class SampleTest {
-
-    @Step("Navigate to <url>")
-    public void navigateTo(String url) {
-        com.web.base.utils.driver.Driver.driver.get(url);
-        assertTrue(com.web.base.utils.driver.Driver.driver.getTitle().contains("Gauge"));
-    }
-
-    @Step("Go to Gauge Get Started Page")
-    public void gotoGetStartedPage() throws InterruptedException {
-        WebElement getStartedButton = com.web.base.utils.driver.Driver.driver.findElement(By.xpath("//*[@id=\"content\"]/section[1]/section/div[2]/a[1]"));
-        getStartedButton.click();
-        Gauge.writeMessage("Page title is ", com.web.base.utils.driver.Driver.driver.getTitle());
-    }
-}
-```
-
-- Note that every Gauge step implementation is annotated with a `Step` attribute that takes the Step text pattern as a parameter.
-Read more about [Step implementations in Java](http://getgauge.io/documentation/user/current/test_code/java/java.html)
-
+*Java 11+
+*Gauge BDD
+*Selenium WebDriver
+*Maven
+*Page Object Model
+*Custom Utility Framework
+*Windows / Mac destekli
