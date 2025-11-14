@@ -1,0 +1,9 @@
+{
+	"Args": [
+		"run",
+		"--dir=C:\\Users\\dilan.celik\\Desktop\\web.apac-master"
+	],
+	"FailedItems": [
+		"specs\\ExampleScenario.spec:10"
+	]
+}
